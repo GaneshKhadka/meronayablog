@@ -1,14 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
+
+@section('title','Login')
+
+@push('css')
+
+ <link href="{{ asset('assets/frontend/css/auth/styles.css')}}" rel="stylesheet">
+
+ <link href="{{ asset('assets/frontend/css/auth/responsive.css')}}" rel="stylesheet">
+
+@endpush
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<div class="slider display-table center-text">
+        <h1 class="title display-table-cell"><b>Login</b></h1>
+    </div><!-- slider -->
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+    <section class="blog-area section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-0"></div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="post-wrapper">
+
+                        <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -63,9 +78,17 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+                    </div><!-- post-wrapper -->
+                </div><!-- col-sm-8 col-sm-offset-2 -->
+            </div><!-- row -->
+
+        </div><!-- container -->
+    </section><!-- section -->
+
 @endsection
+
+@push('js')
+
+@endpush
