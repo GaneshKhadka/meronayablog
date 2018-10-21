@@ -29,4 +29,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::get('dashboard','Dashboardcontroller@index')->name('dashboard');
 });
 
-//06 part..11.52 video completed
+//7th video completed
+
