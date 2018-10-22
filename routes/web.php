@@ -22,6 +22,7 @@ Auth::routes();
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function(){
 	Route::get('dashboard','Dashboardcontroller@index')->name('dashboard');
 	Route::resource('tag','TagController');
+	Route::resource('category','CategoryController');
   
 });
 
@@ -29,5 +30,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::get('dashboard','Dashboardcontroller@index')->name('dashboard');
 });
 
-//7th video completed
+//11th video completed
 

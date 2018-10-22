@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Tag')
+@section('title','Category')
 
 @push('css')
 
@@ -13,9 +13,9 @@
 
 <div class="container-fluid">
             <div class="block-header">
-                <a class="btn btn-primary waves-effect" href="{{ route('admin.tag.create')}}">
+                <a class="btn btn-primary waves-effect" href="{{ route('admin.category.create')}}">
                 	<i class="material-icons">add</i>
-                	<span>Add New Tag</span>
+                	<span>Add New Category</span>
                 </a>
             </div>
             
@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                ALL TAGS
+                                ALL CATEGORIES
                             </h2>
                         </div>
                         <div class="body">
@@ -50,20 +50,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        @foreach($tags as $key=>$tag)
+                                        @foreach($categories as $key=>$category)
                                         <tr>
                                           <td>{{ $key + 1 }}</td>
-                                          <td>{{ $tag->name }}</td>
-                                          <td>{{ $tag->created_at }}</td>
-                                          <td>{{ $tag->updated_at }}</td>
+                                          <td>{{ $category->name }}</td>
+                                          <td>{{ $category->created_at }}</td>
+                                          <td>{{ $category->updated_at }}</td>
                                           <td class="text-center">
-                                            <a href="{{ route('admin.tag.edit',$tag->id) }}" class="btn btn-info waves-effect">
+                                            <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-info waves-effect">
                                                 <i class="material-icons">edit</i>
                                             </a>
-                                            <button class="btn btn-danger waves-effect" type="button" onclick="deleteTag({{ $tag->id }})">
+                                            <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $category->id }})">
                                                 <i class="material-icons">delete</i>
                                             </button>
-                                            <form id="delete-form-{{ $tag->id }}" action="{{ route('admin.tag.destroy',$tag->id)}}" method="POST" style="display: none;">
+                                            <form id="delete-form-{{ $category->id }}" action="{{ route('admin.category.destroy',$category->id)}}" method="POST" style="display: none;">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
@@ -98,7 +98,7 @@
     <script src="{{asset('assets/backend/js/pages/tables/jquery-datatable.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.8/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
-        function deleteTag(id)
+        function deleteCategory(id)
 
         {
             const swalWithBootstrapButtons = swal.mixin({
