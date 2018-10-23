@@ -76,8 +76,8 @@
                                     </div>
                                 </div>
 
-                                <a class="btn btn-danger m-t-15 waves-effect" href="{{ route('admin.category.index') }}">BACK</a>
-                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
+                                <!-- <a class="btn btn-danger m-t-15 waves-effect" href="{{ route('admin.category.index') }}">BACK</a>
+                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button> -->
                             
                         </div>
                     </div>
@@ -92,8 +92,10 @@
                                 EDITOR
                             </h2>
                         </div>
-                        <div class="body">
+                        <div class="body text-center">
                             <textarea id="tinymce" name="body"></textarea>
+                            <a class="btn btn-danger m-t-15 waves-effect" href="{{ route('admin.category.index') }}">BACK</a>
+                                 <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
                         </div>
                     </div>
                 </div>
