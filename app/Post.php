@@ -12,10 +12,10 @@ class Post extends Model
     }
     public function categories()
     {
-    	return $this->belongsToMany('App\Category')->withTimeStamps();
+    	return $this->belongsToMany('App\Category')->withTimestamps();
     }
     public function tags()
     {
-    	return $this->belongsToMany('App\Tag')->withTimeStamps();
+    	return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 }
