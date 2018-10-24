@@ -61,6 +61,13 @@
                            </a>
                        </li>
 
+                       <li class="{{ Request::is('admin/pending/post') ? 'active' : '' }}">
+                            <a href="{{route('admin.post.pending')}}">
+                             <i class="material-icons">library_books</i>
+                             <span>Pending Posts</span>
+                           </a>
+                       </li>
+
                        <li class="header">Settings</li>
 
                        <li>
@@ -84,6 +91,14 @@
                              <span>Dashboard</span>
                            </a>
                        </li>
+
+                         <li class="{{ Request::is('author/post*') ? 'active' : '' }}">
+                            <a href="{{route('author.post.index')}}">
+                             <i class="material-icons">library_books</i>
+                             <span>Posts</span>
+                           </a>
+                       </li>
+
                        <li class="header">Settings</li>
 
                        <li>

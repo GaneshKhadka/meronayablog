@@ -84,6 +84,15 @@
                                           <td>{{ $post->created_at }}</td>
                                          <!--  <td>{{ $post->updated_at }}</td> -->
                                           <td class="text-center">
+                                            @if($post->is_approved == false)
+                 <button type="button" class="btn btn-success waves-effect" onclick="approvePost({{ $post->id }})">
+                     <i class="material-icons">done</i>
+                 </button>
+                 <form method="POST" action="{{ route('admin.post.approve',$post->id) }}" id="approval-form" style="display: none;">
+                     @csrf
+                     @method('PUT')
+                 </form>
+            @endif
 
                                             <a href="{{ route('admin.post.show',$post->id) }}" class="btn btn-info waves-effect">
                                                 <i class="material-icons">visibility</i>
@@ -159,10 +168,44 @@ swalWithBootstrapButtons({
       'Cancelled',
       'Your file is safe :)',
       'error'
-    )
+     )
+    }
+   })
   }
+
+  function approvePost(id)
+
+        {
+            const swalWithBootstrapButtons = swal.mixin({
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false,
 })
-        }
+
+swalWithBootstrapButtons({
+  title: 'Are you sure?',
+  text: "You want to approve this Post!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, approve it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    event.preventDefault();
+    document.getElementById('approval-form').submit();
+  } else if (
+    // Read more about handling dismissals
+    result.dismiss === swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons(
+      'Cancelled',
+      'The post remains pending :)',
+      'info'
+     )
+   }
+  })
+ }
 
     </script>
 
