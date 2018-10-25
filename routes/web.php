@@ -30,6 +30,9 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
     Route::get('pending/post','PostController@pending')->name('post.pending');
 	Route::put('/post/{id}/approve','PostController@approval')->name('post.approve');
+
+	Route::get('/subscriber','SubscriberController@index')->name('subscriber.index');
+	Route::delete('/subscriber/{subscriber}','SubscriberController@destroy')->name('subscriber.destroy');
 });
 
 Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']], function(){
@@ -37,5 +40,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::resource('post','PostController');
 });
 
-//20th 10.43 mins video completed
+//21 mins video completed
 

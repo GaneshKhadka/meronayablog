@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Author;
 
+use App\Notifications\NewAuthorPost;
+use App\User;
 use App\Post;
 use App\Category;
 use App\Tag;
@@ -12,6 +14,8 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
+
 
 class PostController extends Controller
 {
@@ -84,7 +88,8 @@ class PostController extends Controller
 
         $post->categories()->attach($request->categories);
         $post->tags()->attach($request->tags);
-
+        $users = User::where('role_id','1')->get();
+        Notification::send($users, new NewAuthorPost($post));
         Toastr::success('Post Successfully Saved!','Success');
         return redirect()->route('author.post.index');
     }

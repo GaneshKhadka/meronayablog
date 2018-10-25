@@ -1,0 +1,41 @@
+How secure is wordpress for ecommerce site?
+Nowadays the wordpress ecommerce site are more secure. You can get the plugin like BruteProtect and you can install SSL(Secure Sockets Layer) and use a strong password for your admin account. Such that WordPress based eCommerce site can be safe and secure.
+
+How can I protect a website with a password?
+With the use of .htaccess access file you can protect your site with a password.You can follow the below steps :
+Step 1: Generate the code.
+Step 2: Create the .htaccess file.
+Step 3: Create the .htpasswd file.
+Step 4:Verify your account.
+
+What is .htaccess?
+It stands for Hypertext Access.This confirguration file is used by Apache based web-servers.This .htaccess files are used to alter the confirguration of the Apache Web Server software to enable or disable the additional functionality and features that's the Apache Web Server software has to offer.
+
+What are the uses of .htaccess file?
+It allows to disabled a certain functions which avoid the attackers to break your site.
+It also helps to protect your site with a password.
+It helps to create a custom made error page.
+It also helps to redirect visitors to another page.
+
+
+Is the plugin multisite compatible?
+Offcourse! the plugin multisite is compatible.There is a dedicated network settings page where you can switch between network activated SSL and per page SSL. In the dedicated multisite plugin, you can override all site settings for SSL on the network level, and can activate and deactivate SSL in the network menu for each site.
+
+How can I use plugins in my multisite website?
+For this you have to remember the two things:
+Passive compatibility:
+It means doing nothing multisite specific, but it works without breaking anything.
+Active compatibility:
+It means changing or extending multisite specific behaviour.
+
+In case the plugin you want to use doesn't say anything about its compatibility on multisites, then you just have to try them out,they may break the things but they can also work without problem, it depends on what is their purpose.
+
+
+What is varnish cache server?
+Varnish is an HTTP accelerator which is designed for content-heavy dynamic websites as well as for APIs.You can install it infront of any server that speaks HTTP and configure it to cache the contents.Varnish cache is very fast which typically speeds up delivery with a factor of 300 to 1000x, which depends on your architecture.
+
+How can I disable a varnish cache?
+Basically we use varnish for load balancing and to speed up page loads by having the varnish answer requests, instead of storage servers.Indeed varnish makes a web page faster.
+But sometimes you can temporarily disable the varnish cache.Foe example when you edit your website you can do this by adding a .htaccess file with the below code:
+
+Header add "disablevcache" "true"
