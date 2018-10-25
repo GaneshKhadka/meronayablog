@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -35,5 +37,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::resource('post','PostController');
 });
 
-//18th video completed
+//20th 10.43 mins video completed
 
