@@ -40,5 +40,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::resource('post','PostController');
 });
 
-//21 mins video completed
+//23 video completed
 
