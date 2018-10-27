@@ -76,6 +76,14 @@
                        </li>
 
                        <li class="header">Settings</li>
+                       <li class="{{ Request::is('admin/settings') ? 'active' : '' }}">
+                            <a href="{{route('admin.settings')}}">
+                             <i class="material-icons">settings</i>
+                             <span>Settings</span>
+                           </a>
+                       </li>
+
+
 
                        <li>
                             <a class="dropdown-item" href="{{ route('logout') }}"
