@@ -39,3 +39,439 @@ Basically we use varnish for load balancing and to speed up page loads by having
 But sometimes you can temporarily disable the varnish cache.Foe example when you edit your website you can do this by adding a .htaccess file with the below code:
 
 Header add "disablevcache" "true"
+
+
+What is the command to run the Local development server in Laravel?
+If you have installed PHP locally then you can use the PHP's built-in development server to run your application, for this you can run the artisan command:
+
+php artisan serve
+
+This command will start your development server at http://localhost:8000
+
+What is composer?
+Composer is a tool for dependency and libraries management.It helps us for installing various components for our application such as laravel framework, Doctrine,etc.
+
+How to install laravel via composer?
+You can install the laravel by running the following command:
+
+composer create-project laravel/laravel your-project-name version
+
+
+List some artisan command in laravel.
+php artisan tinker
+php artisan make
+php artisan list
+php artisan help
+php artisan make:model model_name
+php artisan make:controller contoller_name
+php artisan make:auth
+php artisan migrate
+php artisan migrate:reset 
+php artisan migrate:rollback
+php artisan migrate:refresh
+php artisan make:job
+etc
+
+What is seeder in laravel?
+The seeder class seed tha data into our tables.All seed classes are stored in the database/seeds directory.Seed classes may have any name you wish, but should follow some sensible convention, such as UsersTableSeeder, etc.By default, a DatabaseSeeder class is defined for you. From this class, you may use the method to run other seed classes, allowing you to control the seeding order. When the backend is emplty we can populate it with some data by simply issuing the following command in the terminal:
+
+php artisan db:seed
+
+
+What is MVC patterns in Laravel?
+Laravel applications follows the Model-View-Controller(MVC) design pattern. This pattern helps you to tier your code for maintenance.
+
+Models:
+It helps to interact with your database and retrive your objects information.It consists of a layer residing between the data and the application. The data itself can be stored in various tyoes of database systems such as MYSQL or even simple XML or Excel files.
+
+Views:
+Views are the visual representation of our web application, they are respomsible for presenting the data that the controller received from the Model.They can be easily built using the Blade template language that comes with Laravel or simply using the Blade template language that comes with laravel.Blade is driven by template inheritance and sections.When laravel renders these Views it examines first their file extension,depending on it being either .blade.php, determines if laravel treats our view as a blade template or not.
+
+Controllers:
+The function of controller is to handle the requests and pass the data from the Model to the views. Thus a controller can be considered as the link between our model and views.
+
+What is schema builder in laravel?
+Laravel Schema class provides a database agnostic way of manipulating tables. It helps in managing all database related work such as creating or deleting tables and adding fields to an existing table. It works with multitable of databasea systems supported by laravel and mysql which is default one.The schema class has the same API accross all of these database systems.
+
+What is the artisan command to make the users table?
+For creating the migration you can use the below command:
+php artisan make:miration create_users_table
+This command will create a uses table in your database/migrations directory.
+
+What is the use of migration class up and down in laravel?
+up method:
+The up method is used to add new tables, columns, or indexes to your database.
+
+down method:
+The down method should reverse the operations performed by the up method.
+
+What is the use of rollback command in laravel?
+Rollback command is used to perform the changes that are performed in the latest migration operation.This command rolls back the last batch of migrations which may include multiple migration files.
+Command:
+php artisan migrate:rollback
+
+What is the command for displaying the current laravel version?
+
+php artisan --version
+....................
+
+Explain about Laravel's Middleware.
+Middleware acts as the middleman between request and response.Laravel includes a middleware that varifies whether the user of the application is authenticated or not.If the user is authenticated, then the user will be redirected to home page otherwise the user will be redirected to login page.
+
+Why migrations are necessary in laravel?
+Migrations are necessary because of the following reasons:
+Without migrations, database consistency while sharing an app is almost impossible,especially as more and more people collaborate on the web app.
+
+The database also needs to be synced as well.
+
+
+What are the aggregates methods provided by query builder in Laravel?
+count()
+max()
+min()
+sum()
+avg()
+
+What is CSRF and where it is used?
+CSRF stands for Cross-Site Request Forgery. It is an attack that forces an end user to execute unwanted actions on the web application in which they are currently authenticated.CSRF attacks specially target state changing requests, not theft of data, since the attacker has no way to see the response to the forged request.
+
+
+..............
+
+Write a method to create a comment in laravel.
+See the below few lines of code:
+
+$post = App\Post::find(1);
+
+$comment = $post->comments()->create([
+    'message' => 'Added a new comment.',
+]);
+
+
+What is dd() in laravel?
+It is debugging technique in php when we run it shows the variables in the browser,with hope to find what the error is.It stands for "Dump and Die". Also we can say it is a specific short helper function for showing the variables.
+You can see the below examples.
+
+$data = [];
+$data['rows'] = User::all();
+dd($data);
+
+It will display all the arrays.
+
+
+What is API in laravel?
+It stands for application program interface.With the use of API programmer can make a request to the operating system using graphical user interface or command interface.You can also create REST API in laravel with authentication using passport.API is also known as web services.Web services are very important when you create a web application and mobile application.We can easily integrate an API in laravel so it is more popular PHP framework.
+
+
+Why laravel is the best PHP framework?
+Laravel is the best PHP framework because of the following reasons:
+1. Object oriented libraries.
+2. Built-in Authentication
+3. Supports MVC patterns.
+4. More security features.
+5. Easily can migrate a data.
+6. Responsible interface.
+7. Can create a dummy data for testing using database seeding concept.
+
+How can I push a project to github or gitlab?
+Push command is used to upload local repository content to a remote repository. Pushing is how you transfer commits from your local repository to a remote repository.
+Follow the below steps:
+1. If you are new to github then create your github account.
+2. Create a new repository name(i.e your project name).
+3. By default you can see the below command lines instructions:
+
+…or create a new repository on the command line
+echo "# demo" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/GaneshKhadka/demo.git
+git push -u origin master
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/GaneshKhadka/demo.git
+git push -u origin master
+
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+4. Follow the above steps as per the instructions.
+5. Finally you have push your project in github.
+
+
+
+How to clone(or download) a project from github?
+Follow the below steps:
+1. Create a folder name where you want to clone your project.
+2. Open terminal and go to the recently created directory folder.
+And type the following command: git clone https://gitlab.com/ganeshkhadka/news_portal.git
+
+In this clone project, you have missed some of the folder such as vender,env etc. So, open the project and perform the following steps:
+
+1. Open composer.json file and copy the following code:
+
+php -r "file_exists('.env') || copy('.env.example', '.env');" 
+
+2. Open terminal and type the following command:
+
+cd news_portal 
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+This command will create the .env file in your project folder.
+
+3. Then finally update the composer by using the following command:
+
+composer update
+
+It will take few minutes to update the composer.
+
+...................
+What is the best wordpress plugin for ecommerce site?
+You can get the plenty of ecommerce plugins. Not all the plugins meets the essential features but some of the ecommerce plugins are useful for selling the eBooks,music,etc. Among the different plugins WooCommerce is the most popular wordpress plugin for ecommerce site. This plugin is free to use and easy to use.We can get the large number of addons and themes for WooCommerce.We can also get the hundreds of extensions and themes from where we can easily set the new features.At the sametime it also supports the built-in payment gateways.So it is more popular among the other ecommerce plugin.
+
+
+Why site made with wordpress needs security?
+Security comes the most important factor for websites because the hackers can steal useful data, passwords, can install the malicious software, etc which can cause the serious damage to your business revenue.Not only the wordpress site each and every site should maintain their security and keep updated regurlary.
+
+
+Lists some plugins to secure your wordpress site?
+The below are the lists of wordpress plugin to secure the website:
+1. Wordfence
+2. Sucuri
+3. iThemes Security
+4. BulletProof Security
+4. Anti malware security
+5. All in one WP security
+
+...........................
+
+How to move your wordpress site to live?
+Before moving the wordpress site to live you should have a domain name and web hosting.I will recommend to buy a domain from blue hosting which provides the exclusive discount and provides the free domain.
+If you are ready then you can follow the below steps:
+1. Export wordpress data from your local Apache server.
+2. Upload your wordpress site to live.
+For uploading the wordpress site you can use the FTP server or you can also upload the files manually.
+3. Now you need to create MYSQL database on live site
+You can provide name and password for your wordpress database.
+
+4.Now import your local database to live site.
+If you have successfully upload your data then you are ready to go
+
+5.Change the URL site.
+
+What are primitives datatypes supported by PHP?
+There are eight different primitive datatypes supported by PHP:
+1.Integer,
+2.Floating point number,
+3.String,
+4.Booleans,
+5.Array,
+6.Object,
+7.Resource and
+8.NULL
+These datatypes are used to construct variables.
+
+How can I start a PHP session?Give the syntax and example.
+A PHP session is easily started by making a call to the session_start() function. The function first checks if a session is started and if no session is started then it starts one. It is mandatory to put the call to session_start() at the beginning of the page.
+
+session_start() creates a session and restart the current one bases on a session identifier passed by a POST and GET method by a cookie.
+
+Syntax:
+bool sessio_start(void)
+
+Example:
+session_start();
+
+
+How can I create a session in PHP?
+Inorder to create a session in PHP, first you need to call the PHP session_start function and then store your values in the $_SESSION array variable.
+Suppose you want to know the number of times that a page has been loaded, for this you can use a session.
+You can see the below example to create a cookie:
+
+Code:
+
+<?php
+session_start(); //start the PHP_session function
+if(isset($_SESSION['page_count']))
+{
+$_SESSION['page_count'] += 1;
+}
+else
+{
+$_SESSION['page_count'] = 1;
+}
+echo 'You are visitor number ' . $_SESSION['page_count'];
+?>
+
+Result:
+You are visitor number 1
+
+
+
+How can you destroy a PHP session?
+A PHP session can be destroyed by session_destroy() function. This PHP function doesn't need any argument and a single call can destroy all the session variables.If you want to destroy a single session variable then you can use unset() function to unset a session variable.
+
+Example:
+<?php
+unset($_SESSION['counter']);
+?>
+
+You can also see the below example which will destroy all the session variables.
+<?php
+session_destroy();
+?>
+
+
+What are cookies in PHP?
+Cookies are a mechanism for storing data in the remote browser and thus tracking or identifying return users.
+Cookies are created at server side and saved to the client side.Browser always store this information on the local machine for future use.
+
+You can set the cookies using the functions:
+setcookie() or
+setrawcookie() function.
+
+How to set the PHP cookie?
+PHP setcookie() function is used to set cookie with HTTP response. Once the cookie is set, you can access it by $_COOKIE superglobal variable.
+
+Syntax:
+bool setcookie ( string $name [, string $value [, int $expire = 0 [, string $path 
+[, string $domain [, bool $secure = false [, bool $httponly = false ]]]]]] )
+
+Example:
+setcookie("CookieName", "CookieValue");/* defining name and value only*/
+setcookie("CookieName", "CookieValue", time()+1*60*60);//using expiry in 1 hour(1*60*60 seconds or 3600 seconds)
+setcookie("CookieName", "CookieValue", time()+1*60*60, "/mypath/", "abc.com", 1);
+
+
+
+How cookies are passed in the HTTP protocol?
+The server sends the following in its response header to set a cookie field.
+
+Set-Cookie:name=value
+
+If there is a cookie set, then the browser sends the following in its request header.
+
+Cookie:name=value
+
+How to upload single and multiple files in PHP?
+PHP allows you to upload single and multiple files through few lines of code. Php file upload features allows you to upload text and binary files both. Apart from this, you can have the full control over the file to be uploaded through PHP authentication  and the file operation funtions.
+You can see the PHP file upload example:
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload your files</title>
+</head>
+<body>
+<form enctype="multipart/form-data" action="upload.php" method="POST">
+<p>Upload your file</p>
+<input type="file" name="uploaded_file"></input><br />
+<input type="submit" value="Upload"></input>
+</form>
+</body>
+</html>
+<?PHP
+if(!empty($_FILES['uploaded_file']))
+{
+$path = "uploads/";
+$path = $path . basename( $_FILES['uploaded_file']['name']);
+if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+echo "The file ". basename( $_FILES['uploaded_file']['name']). 
+" has been uploaded";
+} else{
+echo "There was an error uploading the file, please try again!";
+}
+}
+?>
+
+
+What is PHP function?
+A function is a block of code which can be called from any point in a script after it has been declared. Benefit of using PHP functions is that they can be reused many times. It can take input as argument list and return value. PHP comes with hundreds of ready made built in functions, making it a very rich language.
+
+What are the advantages of using a PHP functions?
+The advantages of using a PHP function are mentioned below:
+Portable:
+PHP can run for almost every server and most platforms. You can run it easily in Apache,IIS, etc. This means "written once run anywhere".
+
+Cost:
+PHP itself is free and the majority of items it works without the box(Apache, MySql) are free. This gives your project a very low initial cost threshold.
+
+Code reusability:
+PHP functions are defined once and can be invoked many times, like in other programming languages.
+
+Easy to understand:
+PHP functions understand the flow of the application because every logic is divided in the form of functions.
+
+
+Write a simple PHP function.
+Creating a PHP functions is very easy. Let's create two functions that will print the message "welcome to our website phphelp.net".While creating a function its name start with keyword function and all the PHP code shoud be inside the curley braces { and } as in example below:-
+
+Code:
+    <?php
+        /* Defining a PHP Function */
+         function writeMessage() {
+         echo "Welcome to our website phphelp.net!";
+         }
+         /* Calling a PHP Function */
+         writeMessage();
+     ?>
+
+Result:
+welcome to our website phphelp.net! 
+
+What is PHP Call By Value?
+PHP allows you to call function by value and reference both. In case of PHP call by value, actual value is not modified if it is not modified inside the function.
+See the example below:
+
+<?php 
+function msg($str1) 
+{ 
+    $str1 .= ‘This is phphelp.net’; 
+} 
+$str = 'Welcome '; 
+msg($str); 
+echo $str; 
+?>
+
+In this example, variable $str is passed to the msg function where it is concatenated with 'This is phphelp.net' string. But, printing $str variable results 'Welcome' only. It is because changes are done in the local variable $str1 only. It doesn't reflect to $str variable.
+
+The above example gives the below result:
+Welcome
+
+What is PHP call by reference?
+PHP call by reference allows you to override the normal scoping rules and give a function direct access to a variable. To be passed by reference, the argument must be a variable; you indicate that a particular argument of a function will be passed by reference by preceding the variable name in the parameter list with an ampersand(&).
+Here, the variable $str is passed to the msg function where it is concatenated with 'Phphelp.net' string. Here, priting $str variable results 'Welcome Phphelp.net'. It is because changes are done in the actual variable $str.
+Example:
+
+<?php 
+function msg(&$str1) 
+{ 
+   $str1 .= ‘Phphelp.net’; 
+} 
+$str = 'Welcome'; 
+msg($str); 
+echo $str; 
+?>
+
+Result:
+Welcome Phphelp.net
+
+
+What is PHP recursive function?
+A recursive function is a function that calls itself again and again.
+Recursion occurs when something contains, or uses a similar verison of itselt. In programming it happens when a function is having a call to itself.
+
+You can see the below factorial problem:
+5! = 5*4*3*2*1
+   = 120
+
+Example:
+function fact($n) {
+  if ($n === 0) { // our base case
+    return 1;
+  }
+  else {
+     return $n * fact($n-1); // calling itself again and again
+  }
+}
+
