@@ -23,6 +23,7 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=>['auth']], function (){
 	Route::post('favorite/{post}/add','FavoriteController@add')->name('post.favorite');
+	Route::post('comment/{post}','CommentController@store')->name('comment.store');
 });
 
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function(){
@@ -58,5 +59,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 });
 
-//32 video completed
+//32 30.08  completed
 

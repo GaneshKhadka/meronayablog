@@ -190,20 +190,17 @@
 
                 <div class="col-lg-8 col-md-12">
                     <div class="comment-form">
-                        <form method="post">
-                            <div class="row">
+                         
+                         @guest
+                          <p>For post a new comment.You need to Login First.<a href="{{ route('login') }}">Login</a></p>
+                         @else
 
-                                <div class="col-sm-6">
-                                    <input type="text" aria-required="true" name="contact-form-name" class="form-control"
-                                        placeholder="Enter your name" aria-invalid="true" required >
-                                </div><!-- col-sm-6 -->
-                                <div class="col-sm-6">
-                                    <input type="email" aria-required="true" name="contact-form-email" class="form-control"
-                                        placeholder="Enter your email" aria-invalid="true" required>
-                                </div><!-- col-sm-6 -->
+                        <form method="post" action="{{ route('comment.store',$post->id) }}">
+                            <div class="row">
+                                @csrf
 
                                 <div class="col-sm-12">
-                                    <textarea name="contact-form-message" rows="2" class="text-area-messge form-control"
+                                    <textarea name="comment" rows="2" class="text-area-messge form-control"
                                         placeholder="Enter your comment" aria-required="true" aria-invalid="false"></textarea >
                                 </div><!-- col-sm-12 -->
                                 <div class="col-sm-12">
@@ -212,64 +209,12 @@
 
                             </div><!-- row -->
                         </form>
+                        @endguest
                     </div><!-- comment-form -->
 
-                    <h4><b>COMMENTS(12)</b></h4>
+                    <h4><b>COMMENTS({{$post->comments()->count()}})</b></h4>
 
-                    <div class="commnets-area">
-
-                        <div class="comment">
-
-                            <div class="post-info">
-
-                                <div class="left-area">
-                                    <a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
-                                </div>
-
-                                <div class="middle-area">
-                                    <a class="name" href="#"><b>Katy Liu</b></a>
-                                    <h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
-                                </div>
-
-                                <div class="right-area">
-                                    <h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
-                                </div>
-
-                            </div><!-- post-info -->
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                                Ut enim ad minim veniam</p>
-
-                        </div>
-
-                        <div class="comment">
-                            <h5 class="reply-for">Reply for <a href="#"><b>Katy Lui</b></a></h5>
-
-                            <div class="post-info">
-
-                                <div class="left-area">
-                                    <a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
-                                </div>
-
-                                <div class="middle-area">
-                                    <a class="name" href="#"><b>Katy Liu</b></a>
-                                    <h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
-                                </div>
-
-                                <div class="right-area">
-                                    <h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
-                                </div>
-
-                            </div><!-- post-info -->
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                                Ut enim ad minim veniam</p>
-
-                        </div>
-
-                    </div><!-- commnets-area -->
+                    @foreach($post->comments as $comment)
 
                     <div class="commnets-area ">
 
@@ -278,27 +223,27 @@
                             <div class="post-info">
 
                                 <div class="left-area">
-                                    <a class="avatar" href="#"><img src="images/avatar-1-120x120.jpg" alt="Profile Image"></a>
+                                    <a class="avatar" href="#"><img src="{{Storage::disk('public')->url('profile/'.$comment->user->image)}}"></a>
                                 </div>
 
                                 <div class="middle-area">
-                                    <a class="name" href="#"><b>Katy Liu</b></a>
-                                    <h6 class="date">on Sep 29, 2017 at 9:48 am</h6>
+                                    <a class="name" href="#"><b>{{$comment->user->name}}</b></a>
+                                    <h6 class="date">on {{ $post->created_at->diffForHumans() }}</h6>
                                 </div>
 
-                                <div class="right-area">
+                               <!--  <div class="right-area">
                                     <h5 class="reply-btn" ><a href="#"><b>REPLY</b></a></h5>
-                                </div>
+                                </div> -->
 
                             </div><!-- post-info -->
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur
-                                Ut enim ad minim veniam</p>
+                            <p>{{ $comment->comment }}</p>
 
                         </div>
 
                     </div><!-- commnets-area -->
+
+                    @endforeach
 
                     <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a>
 
