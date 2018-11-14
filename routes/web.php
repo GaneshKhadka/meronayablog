@@ -44,12 +44,18 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
 	Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 
+	Route::get('comments','CommentController@index')->name('comment.index');
+	Route::delete('comments/{id}','CommentController@destroy')->name('comment.destroy');
+
 	Route::get('/subscriber','SubscriberController@index')->name('subscriber.index');
 	Route::delete('/subscriber/{subscriber}','SubscriberController@destroy')->name('subscriber.destroy');
 });
 
 Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middleware'=>['auth','author']], function(){
    Route::get('dashboard','Dashboardcontroller@index')->name('dashboard');
+
+   Route::get('comments','CommentController@index')->name('comment.index');
+   Route::delete('comments/{id}','CommentController@destroy')->name('comment.destroy');
 
    Route::get('settings','SettingsController@index')->name('settings');
    Route::put('profile-update','SettingsController@updateProfile')->name('profile.update');
@@ -59,5 +65,5 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 });
 
-//32 30.08  completed
+//34 14mins completed
 

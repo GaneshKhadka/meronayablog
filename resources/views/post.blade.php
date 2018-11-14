@@ -87,7 +87,7 @@
                                     </li>
                                    
                                     
-                                    <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                    <li><a href="#"><i class="ion-chatbubble"></i>{{$post->comments->count()}}</a></li>
                                     <li><a href="#"><i class="ion-eye"></i>{{ $post->view_count }}</a></li>
                             </ul>
 
@@ -168,7 +168,7 @@
                                     </li>
                                    
                                     
-                                    <li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
+                                    <li><a href="#"><i class="ion-chatbubble"></i>{{$post->comments->count()}}</a></li>
                                     <li><a href="#"><i class="ion-eye"></i>{{ $randompost->view_count }}</a></li>
                                 </ul>
 
@@ -214,7 +214,8 @@
 
                     <h4><b>COMMENTS({{$post->comments()->count()}})</b></h4>
 
-                    @foreach($post->comments as $comment)
+                    @if($post->comments->count() > 0)
+                       @foreach($post->comments as $comment)
 
                     <div class="commnets-area ">
 
@@ -244,8 +245,18 @@
                     </div><!-- commnets-area -->
 
                     @endforeach
+                    @else
+                        
+                        <div class="commnets-area ">
 
-                    <a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a>
+                        <div class="comment">
+
+                           <p>No comment yet.Be the first to comment.</p>
+
+                        </div>
+
+                    </div><!-- commnets-area -->
+                    @endif
 
                 </div><!-- col-lg-8 col-md-12 -->
 
