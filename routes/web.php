@@ -17,7 +17,12 @@ Route::get('posts','PostController@index')->name('post.index');
 
 Route::get('post/{slug}','PostController@details')->name('post.details');
 
+Route::get('/category/{slug}','PostController@postByCategory')->name('category.posts');
+Route::get('/tag/{slug}','PostController@postByTag')->name('tag.posts');
+
 Route::post('subscriber','SubscriberController@store')->name('subscriber.store');
+
+Route::get('/search','SearchController@search')->name('search');
 
 Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -65,5 +70,9 @@ Route::group(['as'=>'author.','prefix'=>'author','namespace'=>'Author','middlewa
    Route::get('/favorite','FavoriteController@index')->name('favorite.index');
 });
 
-//34 14mins completed
+View::composer('layouts.frontend.includes.footer',function($view){
+	$categories = App\Category::all();
+	$view->with('categories',$categories);
+  
+});
 
