@@ -1,15 +1,13 @@
 @extends('layouts.frontend.app')
 
-@section('title')
-{{ $query }}
-@endsection
-@push('css')
-  <link href="{{ asset('assets/frontend/css/category/styles.css')}}" rel="stylesheet">
+@section('title','Profile')
 
-    <link href="{{ asset('assets/frontend/css/category/responsive.css')}}" rel="stylesheet">
+@push('css')
+  <link href="{{ asset('assets/frontend/css/profile/styles.css')}}" rel="stylesheet">
+
+    <link href="{{ asset('assets/frontend/css/profile/responsive.css')}}" rel="stylesheet">
 
     <style>
-
         .favorite_posts{
             color: red;
         }
@@ -17,16 +15,22 @@
 
 @endpush
 @section('content')
-   <div class="slider display-table center-text">
-        <h1 class="title display-table-cell"><b>{{ $posts->count() }} Results for {{ $query }}</b></h1>
-    </div><!-- slider -->
 
-    <section class="blog-area section">
-        <div class="container">
+<div class="slider display-table center-text">
+    <h1 class="title display-table-cell"><b>{{ $author->name }}</b></h1>
+  </div><!-- slider -->
 
-            <div class="row">
-             @if($posts->count() > 0)
-                @foreach($posts as $post)
+  <section class="blog-area section">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-8 col-md-12">
+          <div class="row">
+            @if($posts->count() > 0)
+
+            @foreach($posts as $post)
+
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100">
                         <div class="single-post post-style-1">
@@ -64,10 +68,11 @@
                         </div><!-- single-post -->
                     </div><!-- card -->
                 </div><!-- col-lg-4 col-md-6 -->
-                @endforeach
 
-                @else
-                <div class="col-lg-12 col-md-12">
+                 @endforeach
+
+            @else
+            <div class="col-lg-4 col-md-6">
                     <div class="card h-100">
                         <div class="single-post post-style-1">
 
@@ -85,14 +90,35 @@
                         </div><!-- single-post -->
                     </div><!-- card -->
                 </div><!-- col-lg-4 col-md-6 -->
-                @endif
+            @endif
 
-            </div><!-- row -->
+          </div><!-- row -->
 
-        
+        <!--   <a class="load-more-btn" href="#"><b>LOAD MORE</b></a> -->
 
-        </div><!-- container -->
-    </section><!-- section -->
+        </div><!-- col-lg-8 col-md-12 -->
+
+        <div class="col-lg-4 col-md-12 ">
+
+          <div class="single-post info-area ">
+
+            <div class="about-area">
+              <h4 class="title"><b>ABOUT AUTHOR</b></h4>
+              <p>{{ $author->name }}</p><br>
+              <p>{{ $author->about }}</p>
+              <strong>Author Since: {{ $author->created_at->toDateString() }}</strong><br>
+              <strong>Total Posts : {{ $author->posts->count() }}</strong>
+            </div>
+
+
+          </div><!-- info-area -->
+
+        </div><!-- col-lg-4 col-md-12 -->
+
+      </div><!-- row -->
+
+    </div><!-- container -->
+  </section><!-- section -->
 
 
 @endsection
