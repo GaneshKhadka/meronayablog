@@ -81,5 +81,3 @@ View::composer('layouts.frontend.includes.footer',function($view){
 	$view->with('categories',$categories);
   
 });
-
-// 39 17.50 completed
