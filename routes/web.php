@@ -81,3 +81,6 @@ View::composer('layouts.frontend.includes.footer',function($view){
 	$view->with('categories',$categories);
   
 });
+
+//6.14 minutes web host
+//meroblog 123456
